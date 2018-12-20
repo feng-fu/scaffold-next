@@ -4,7 +4,6 @@ import canvas from './canvas'
 
 const reducers = combineReducers({ canvas })
 
-
 const bindMiddleware = middleware => {
   if (process.env.NODE_ENV !== 'production') {
     const { composeWithDevTools } = require('redux-devtools-extension')
@@ -13,4 +12,6 @@ const bindMiddleware = middleware => {
   return applyMiddleware(...middleware)
 }
 
-createStore(reducers, composeWithDevTools(applyMiddleware(logger)))
+export function initializeStore(initialState = { canvas: { layers: [] } }) {
+  return createStore(reducers, initialState, bindMiddleware([]))
+}
