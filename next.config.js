@@ -8,11 +8,6 @@ if (typeof require !== 'undefined') {
 module.exports = nextCss({
   ...nextLess({
     cssModules: true,
-    cssLoaderOptions: {
-      excludePaths: ['node_modules']
-    },
-    lessLoaderOptions: {
-    },
     webpack(config, options) {
       return config
     }
